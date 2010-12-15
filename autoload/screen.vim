@@ -369,6 +369,11 @@ function! s:ScreenInit(cmd)
       if exists(':ScreenShellVertical')
         delcommand ScreenShellVertical
       endif
+
+      " Set default mappings
+      vmap <Leader><Leader> :ScreenSend<CR>
+      nmap <Leader><Leader> mxvip<Leader><Leader>`x
+      imap <Leader><Leader> <Esc><Leader><Leader><Right>
     endif
   endif
 endfunction " }}}
@@ -463,6 +468,12 @@ endfun " }}}
 " Quit the current screen session (short cut to manually quiting vim and
 " closing all screen windows.
 function! s:ScreenQuit(onleave)
+  " TODO: Restore previous mappings if any
+  " Remove default mappings
+  vunmap <Leader><Leader>
+  nunmap <Leader><Leader>
+  iunmap <Leader><Leader>
+
   if exists('g:ScreenShellBootstrapped')
     if !a:onleave
       wa
