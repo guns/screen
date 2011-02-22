@@ -456,12 +456,6 @@ endfun " }}}
 " Quit the current screen session (short cut to manually quiting vim and
 " closing all screen windows.
 function! s:ScreenQuit(onleave)
-  " TODO: Restore previous mappings if any
-  " Remove default mappings
-  vunmap <Leader><Leader>
-  nunmap <Leader><Leader>
-  iunmap <Leader><Leader>
-
   if exists('g:ScreenShellBootstrapped')
     if !a:onleave
       wa
