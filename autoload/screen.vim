@@ -1017,6 +1017,7 @@ function s:screenTmux.close(type) dict " {{{
   if v:shell_error
     return result
   endif
+  call self.exec('set-window-option automatic-rename on')
   return self.exec('kill-pane')
 endfunction " }}}
 
